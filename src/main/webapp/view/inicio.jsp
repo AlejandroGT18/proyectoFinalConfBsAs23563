@@ -276,12 +276,16 @@
 		       while(rs.next()) {
 		       	out.println("<article");
 		       	out.println("<div class='sombra card' style='width: 18rem;height:35rem;'>");
-		       	out.println("<img src='"+rs.getString("fotoPerfil")+"' height='300' class='card-img-top' alt='"+rs.getString("nombre")+"'>");
+		       	out.println("<img src='"+rs.getString("oradores.fotoPerfil")+"' height='300' class='card-img-top' alt=''>");
 		       	out.println("<div class='card-body'>");
-		       	out.println("<button type='button' class='btn btn-secondary'>Negocios</button>");
-		       	out.println("<button type='button' class='btn btn-danger'>Startups</button>");
-		       	out.println("<span class='nombre-orador'>"+rs.getString("nombre") +" "+ rs.getString("apellido")+"</span>");
-		       	out.println("<p class='card-text'>"+rs.getString("temas")+"</p>");
+		       	if(rs.getString("etiquetas") != null) {
+		       		out.println("<button type='button' class='btn btn-danger text-light'>"+rs.getString("etiquetas")+"</button>");	
+		       	}
+		       	if(rs.getString("etiquetasDos") != null) {
+		       		out.println("<button type='button' class='btn btn-primary text-light'>"+rs.getString("etiquetasDos")+"</button>");	
+		       	}
+		       	out.println("<span class='nombre-orador'>"+rs.getString("oradores.nombre") +" "+ rs.getString("oradores.apellido")+"</span>");
+		       	out.println("<p class='card-text'>"+rs.getString("oradores.temas")+"</p>");
 		       	out.println("</div>");
 		       	out.println("</div>");
 		       	out.println("</article>");
